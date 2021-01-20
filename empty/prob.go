@@ -17,5 +17,5 @@ func main() {
 	input := utils.ReadFromFile("input.txt")
 
 	fmt.Println(runPart1(input))
-	// fmt.Println(runPart2(input))
+	fmt.Println(runPart2(input))
 }
