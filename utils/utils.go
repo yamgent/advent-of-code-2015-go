@@ -21,3 +21,22 @@ func Assert(t *testing.T, testname string, expected string, actual string) {
 		t.Fatalf("%v fail, expected '%v', got '%v'", testname, expected, actual)
 	}
 }
+
+// TestCase represents a test case with an input and expected output,
+// and optionally a Testname (if blank, use In as Testname instead).
+type TestCase struct {
+	In       string
+	Out      string
+	Testname string
+}
+
+// AssertTestCase same as Assert, but accepts a TestCase for input
+// instead (which will also intelligently determine test name - if
+// Testname is omitted, we take In as the name instead)
+func AssertTestCase(t *testing.T, testCase TestCase, actual string) {
+	name := testCase.Testname
+	if name == "" {
+		name = testCase.In
+	}
+	Assert(t, name, testCase.Out, actual)
+}

@@ -6,30 +6,30 @@ import (
 )
 
 func TestRunPart1(t *testing.T) {
-	cases := map[string]string{
-		"(())":    "0",
-		"()()":    "0",
-		"(((":     "3",
-		"(()(()(": "3",
-		"))(((((": "3",
-		"())":     "-1",
-		"))(":     "-1",
-		")))":     "-3",
-		")())())": "-3",
+	cases := []utils.TestCase{
+		{In: "(())", Out: "0"},
+		{In: "()()", Out: "0"},
+		{In: "(((", Out: "3"},
+		{In: "(()(()(", Out: "3"},
+		{In: "))(((((", Out: "3"},
+		{In: "())", Out: "-1"},
+		{In: "))(", Out: "-1"},
+		{In: ")))", Out: "-3"},
+		{In: ")())())", Out: "-3"},
 	}
 
-	for k, v := range cases {
-		utils.Assert(t, k, v, runPart1(k))
+	for _, v := range cases {
+		utils.AssertTestCase(t, v, runPart1(v.In))
 	}
 }
 
 func TestRunPart2(t *testing.T) {
-	cases := map[string]string{
-		")":     "1",
-		"()())": "5",
+	cases := []utils.TestCase{
+		{In: ")", Out: "1"},
+		{In: "()())", Out: "5"},
 	}
 
-	for k, v := range cases {
-		utils.Assert(t, k, v, runPart2(k))
+	for _, v := range cases {
+		utils.AssertTestCase(t, v, runPart2(v.In))
 	}
 }
