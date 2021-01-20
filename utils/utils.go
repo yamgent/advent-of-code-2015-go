@@ -6,6 +6,10 @@ import (
 	"testing"
 )
 
+/// ---------------------
+/// I/O HELPERS
+/// ---------------------
+
 // ReadFromFile into a string, panics if file does not exist
 func ReadFromFile(filepath string) string {
 	content, err := ioutil.ReadFile(filepath)
@@ -14,6 +18,10 @@ func ReadFromFile(filepath string) string {
 	}
 	return string(content)
 }
+
+/// ---------------------
+/// TEST HELPERS
+/// ---------------------
 
 // Assert compare expected to actual, fails fatally if doesn't match
 func Assert(t *testing.T, testname string, expected string, actual string) {

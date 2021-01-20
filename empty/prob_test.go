@@ -2,6 +2,7 @@ package main
 
 import (
 	"aoc2015/utils"
+	"strings"
 	"testing"
 )
 
@@ -23,4 +24,12 @@ func TestRunPart2(t *testing.T) {
 	for _, v := range cases {
 		utils.AssertTestCase(t, v, runPart2(v.In))
 	}
+}
+
+func TestRunInput(t *testing.T) {
+	input := utils.ReadFromFile("input.txt")
+	outputs := strings.Split(utils.ReadFromFile("output.txt"), "\n")
+
+	utils.Assert(t, "Actual input part 1", outputs[0], runPart1(input))
+	utils.Assert(t, "Actual input part 2", outputs[1], runPart2(input))
 }
